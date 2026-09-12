@@ -1,0 +1,20 @@
+SANSKRITI CANVAS — READY STEPS 6–10
+
+Copy/replace the included HTML files in the same folder as index.html. Keep assets/ unchanged.
+
+Core flow: Home → India Map → Gujarat → Ahmedabad → Heritage → Detail.
+Categories: Heritage → detail; Culture / Food / Festivals pages are ready.
+Search: search.html. Contributor flow: login/register → contribute → admin demo.
+Backend foundation: backend/app.py, requirements.txt, schema.sql.
+
+BACKEND TEST (optional after frontend):
+1. Open terminal inside backend.
+2. python -m venv venv
+3. venv\Scripts\activate
+4. pip install -r requirements.txt
+5. python app.py
+6. Open http://127.0.0.1:5000/api/health
+
+MYSQL: Run backend/schema.sql in phpMyAdmin after starting MySQL in XAMPP.
+
+NOTE: Login/admin/contribution HTML is prototype/demo UI until Flask + MySQL authentication and persistence are connected.

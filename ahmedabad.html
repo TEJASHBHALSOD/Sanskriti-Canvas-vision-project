@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmedabad | Sanskriti Canvas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, sans-serif;
+      background: #f7f1e7;
+      color: #2d211b;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid #eadfce;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: #6b2d25;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: #9b4b35; }
+
+    .hero {
+      padding: 60px 6% 34px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #9b4b35;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: .98;
+      color: #51241f;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      line-height: 1.8;
+      color: #68584e;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 18px 45px rgba(74,45,30,.14);
+    }
+
+    .section {
+      padding: 24px 6% 70px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 22px;
+      font-size: 13px;
+      color: #78685d;
+    }
+
+    .breadcrumb a {
+      color: #8d4937;
+      font-weight: 700;
+    }
+
+    .section-title {
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 40px;
+      color: #51241f;
+      margin-bottom: 6px;
+    }
+
+    .section-title p {
+      color: #75665d;
+      font-size: 14px;
+    }
+
+    .intro {
+      background: #fffdf9;
+      border: 1px solid #eadfce;
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 30px rgba(70,45,30,.06);
+    }
+
+    .intro h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: #51241f;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      color: #6d5d54;
+      line-height: 1.8;
+      font-size: 14px;
+      max-width: 900px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .category {
+      background: #fffdf9;
+      border: 1px solid #eadfce;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: .2s ease;
+      box-shadow: 0 8px 24px rgba(70,45,30,.05);
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 30px rgba(70,45,30,.10);
+    }
+
+    .category img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .category-content {
+      padding: 20px;
+    }
+
+    .category h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 27px;
+      color: #51241f;
+      margin-bottom: 7px;
+    }
+
+    .category p {
+      color: #75665d;
+      line-height: 1.65;
+      font-size: 13px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 28px;
+      background: #6b2d25;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .categories { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .categories { grid-template-columns: 1fr; }
+      .nav-links { gap: 12px; }
+      .nav-links a:nth-child(n+3) { display: none; }
+      .hero-img { height: 250px; }
+    }
+  </style>
+<link rel="stylesheet" href="assets/css/common-nav.css"></head>
+
+<body>
+
+  <header class="sc-global-header">
+  <div class="sc-global-nav-wrap">
+    <a class="sc-global-brand" href="index.html" aria-label="Sanskriti Canvas home"><img src="assets/images/logo-full.png" alt="Sanskriti Canvas"></a>
+    <button class="sc-global-menu" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="sc-global-links" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="search.html">⌕ Search</a>
+      <a class="sc-global-login" href="login.html">Login</a>
+    </nav>
+  </div>
+</header>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Gujarat · City</div>
+      <h1>Ahmedabad</h1>
+      <p>
+        Explore Ahmedabad through its heritage, history, famous people,
+        languages, food and festivals.
+      </p>
+    </div>
+
+    <img
+      class="hero-img"
+      src="assets/images/ahmedabad/ahmedabad-hero.jpg"
+      alt="Ahmedabad heritage">
+  </header>
+
+  <main class="section">
+
+    <div class="breadcrumb">
+      <a href="explore.html">India</a>
+      &nbsp; / &nbsp;
+      <a href="gujarat.html">Gujarat</a>
+      &nbsp; / &nbsp;
+      Ahmedabad
+    </div>
+
+    <div class="intro">
+      <h3>Discover Ahmedabad</h3>
+      <p>
+        Ahmedabad brings together historic architecture, living traditions,
+        food, festivals and important cultural landmarks. Choose a category
+        below to explore the city's stories and heritage.
+      </p>
+    </div>
+
+    <div class="section-title">
+      <h2>Explore Ahmedabad</h2>
+      <p>Select a category to continue your cultural discovery.</p>
+    </div>
+
+    <div class="categories">
+
+      <a class="category" href="heritage.html">
+        <img src="assets/images/heritage/sabarmati-ashram.jpg" alt="Ahmedabad Heritage">
+        <div class="category-content">
+          <h3>Heritage</h3>
+          <p>
+            Discover Sabarmati Ashram, Bhadra Fort, Sidi Saiyyed Mosque,
+            stepwells and other historic places.
+          </p>
+        </div>
+      </a>
+
+      <a class="category" href="culture.html">
+        <img src="assets/images/culture/garba.jpg" alt="Gujarati Culture">
+        <div class="category-content">
+          <h3>Culture</h3>
+          <p>
+            Explore traditions, folk arts, dance, crafts, languages and
+            cultural practices.
+          </p>
+        </div>
+      </a>
+
+      <a class="category" href="food.html">
+        <img src="assets/images/food/gujarati-thali.jpg" alt="Gujarati Food">
+        <div class="category-content">
+          <h3>Food</h3>
+          <p>
+            Discover Gujarati thali, khaman, fafda-jalebi and Ahmedabad's
+            famous food traditions.
+          </p>
+        </div>
+      </a>
+
+      <a class="category" href="festivals.html">
+        <img src="assets/images/festivals/navratri.jpg" alt="Gujarat Festivals">
+        <div class="category-content">
+          <h3>Festivals</h3>
+          <p>
+            Learn about Navratri, Uttarayan, Diwali and other celebrations
+            connected with the city and state.
+          </p>
+        </div>
+      </a>
+
+      <a class="category" href="#">
+        <img src="assets/images/ahmedabad/ahmedabad-city.jpg" alt="Famous People">
+        <div class="category-content">
+          <h3>Famous People</h3>
+          <p>
+            Explore notable people connected with Ahmedabad's history,
+            society, art and culture.
+          </p>
+        </div>
+      </a>
+
+      <a class="category" href="#">
+        <img src="assets/images/ahmedabad/ahmedabad-city.jpg" alt="Languages">
+        <div class="category-content">
+          <h3>Languages</h3>
+          <p>
+            Discover Gujarati and the linguistic traditions found across
+            Ahmedabad's communities.
+          </p>
+        </div>
+      </a>
+
+    </div>
+
+    <a class="back-btn" href="gujarat.html">← Back to Gujarat</a>
+
+  </main>
+
+<script src="assets/js/common-nav.js"></script></body>
+</html>

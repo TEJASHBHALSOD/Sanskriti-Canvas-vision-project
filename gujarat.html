@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gujarat | Sanskriti Canvas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, sans-serif; background: #f7f1e7; color: #2d211b; }
+    a { text-decoration: none; color: inherit; }
+    nav { height: 72px; display: flex; align-items: center; justify-content: space-between; padding: 0 6%; background: rgba(255,255,255,.92); border-bottom: 1px solid #eadfce; position: sticky; top: 0; z-index: 1000; }
+    .logo { font-family: 'DM Serif Display', serif; font-size: 28px; color: #6b2d25; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
+    .nav-links a:hover { color: #9b4b35; }
+    .hero { padding: 64px 6% 34px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 42px; align-items: center; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 12px; font-weight: 700; color: #9b4b35; margin-bottom: 12px; }
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(44px, 6vw, 76px); line-height: .98; color: #51241f; margin-bottom: 18px; }
+    .hero p { max-width: 650px; line-height: 1.8; color: #68584e; }
+    .hero-img { width: 100%; height: 300px; object-fit: cover; border-radius: 24px; box-shadow: 0 18px 45px rgba(74,45,30,.14); }
+    .section { padding: 24px 6% 70px; }
+    .section-title { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom: 18px; }
+    .section-title h2 { font-family:'DM Serif Display',serif; font-size: 38px; color:#51241f; }
+    .section-title p { color:#75665d; font-size:14px; }
+    .map-layout { display:grid; grid-template-columns: 1.5fr .7fr; gap:20px; }
+    .map-card, .preview-card { background:#fffdf9; border:1px solid #eadfce; border-radius:22px; overflow:hidden; box-shadow:0 12px 30px rgba(70,45,30,.08); }
+    #gujaratMap { height: 620px; width:100%; background:#f4eee4; }
+    .map-toolbar { padding:14px 18px; border-bottom:1px solid #eee3d5; font-size:13px; color:#76665d; display:flex; justify-content:space-between; }
+    .preview-card { min-height:620px; }
+    .preview-image { width:100%; height:230px; object-fit:cover; }
+    .preview-content { padding:24px; }
+    .preview-content .label { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:#a45b42; font-weight:700; }
+    .preview-content h3 { font-family:'DM Serif Display',serif; font-size:34px; color:#51241f; margin:8px 0 10px; }
+    .preview-content p { color:#6d5d54; line-height:1.7; font-size:14px; }
+    .preview-btn { display:inline-block; margin-top:18px; background:#6b2d25; color:white; padding:12px 18px; border-radius:10px; font-size:13px; font-weight:700; }
+    .categories { margin-top:34px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .category { background:#fffdf9; border:1px solid #eadfce; border-radius:18px; padding:22px; transition:.2s; }
+    .category:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(70,45,30,.09); }
+    .category h3 { font-family:'DM Serif Display',serif; font-size:25px; color:#51241f; margin-bottom:6px; }
+    .category p { font-size:13px; line-height:1.6; color:#75665d; }
+    @media(max-width:900px){ .hero,.map-layout{grid-template-columns:1fr}.categories{grid-template-columns:1fr 1fr}.nav-links{gap:12px}.preview-card{min-height:auto} }
+    @media(max-width:600px){ .categories{grid-template-columns:1fr}.nav-links a:nth-child(n+3){display:none} #gujaratMap{height:500px} }
+    .leaflet-container { font-family: Inter, sans-serif; }
+    .district-tooltip { background:#fffdf9; border:1px solid #d8c8b6; color:#51241f; font-weight:700; box-shadow:0 4px 12px rgba(0,0,0,.1); }
+    .leaflet-interactive { cursor: pointer; }
+  </style>
+<link rel="stylesheet" href="assets/css/common-nav.css"></head>
+<body>
+  <header class="sc-global-header">
+  <div class="sc-global-nav-wrap">
+    <a class="sc-global-brand" href="index.html" aria-label="Sanskriti Canvas home"><img src="assets/images/logo-full.png" alt="Sanskriti Canvas"></a>
+    <button class="sc-global-menu" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="sc-global-links" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="search.html">⌕ Search</a>
+      <a class="sc-global-login" href="login.html">Login</a>
+    </nav>
+  </div>
+</header>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">State of India</div>
+      <h1>Gujarat</h1>
+      <p>Explore Gujarat district by district and discover its heritage, culture, food, festivals and stories.</p>
+    </div>
+    <img class="hero-img" src="assets/images/gujarat/gujarat-hero.jpg" alt="Gujarat heritage">
+  </header>
+
+  <section class="section">
+    <div class="section-title">
+      <div>
+        <h2>Explore Gujarat</h2>
+        <p>Hover over a district to highlight it. Click a district to continue.</p>
+      </div>
+    </div>
+
+    <div class="map-layout">
+      <div class="map-card">
+        <div class="map-toolbar"><span>Gujarat District Map</span><span>Hover → Highlight → Preview → Click</span></div>
+        <div id="gujaratMap"></div>
+      </div>
+
+      <aside class="preview-card">
+        <img id="previewImage" class="preview-image" src="assets/images/heritage/somnath-temple.jpg" alt="District preview">
+        <div class="preview-content">
+          <div class="label">Selected District</div>
+          <h3 id="previewTitle">Somnath</h3>
+          <p id="previewText">Hover over a district on the map to see its preview here.</p>
+          <a id="previewButton" class="preview-btn" href="#">View District</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="categories">
+      <a class="category" href="#"><h3>Heritage</h3><p>Historic places, monuments, temples, forts and stepwells.</p></a>
+      <a class="category" href="#"><h3>Culture</h3><p>Languages, traditions, folk arts, dance and local communities.</p></a>
+      <a class="category" href="#"><h3>Food</h3><p>Regional dishes, street food and traditional Gujarati cuisine.</p></a>
+      <a class="category" href="#"><h3>Festivals</h3><p>Navratri, Uttarayan, Diwali and local celebrations.</p></a>
+      <a class="category" href="#"><h3>Famous People</h3><p>People connected with Gujarat's history and cultural identity.</p></a>
+      <a class="category" href="#"><h3>Languages</h3><p>Gujarati and the diverse linguistic traditions of the state.</p></a>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('gujaratMap', { zoomControl: true, scrollWheelZoom: true }).setView([22.4, 71.6], 6.4);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      opacity: 0.08
+    }).addTo(map);
+
+    const previewImage = document.getElementById('previewImage');
+    const previewTitle = document.getElementById('previewTitle');
+    const previewText = document.getElementById('previewText');
+    const previewButton = document.getElementById('previewButton');
+
+    const districtInfo = {
+      Ahmedabad: { text: 'A major cultural and historic city known for old city architecture, Sabarmati Ashram and heritage neighbourhoods.', image: 'assets/images/districts/ahmedabad.jpg', link: 'ahmedabad.html' },
+      Amreli: { text: 'Explore Amreli\'s\' local heritage, religious places and regional cultural traditions.', image: 'assets/images/districts/amreli.jpg', link: '#' },
+      Anand: { text: 'Explore Anand\'s\' regional identity, food traditions and important local institutions.', image: 'assets/images/districts/anand.jpg', link: '#' },
+      Aravalli: { text: 'Discover Aravalli and the heritage around Shamlaji and its surrounding cultural landscape.', image: 'assets/images/districts/aravalli.jpg', link: '#' },
+      Banaskantha: { text: 'Discover Banaskantha, including Ambaji and the cultural heritage of northern Gujarat.', image: 'assets/images/districts/banaskantha.jpg', link: '#' },
+      Bharuch: { text: 'Explore the historic city of Bharuch and its long-standing riverfront and trading heritage.', image: 'assets/images/districts/bharuch.jpg', link: '#' },
+      Bhavnagar: { text: 'Explore Bhavnagar\'s\' palaces, temples, historic institutions and Saurashtra culture.', image: 'assets/images/districts/bhavnagar.jpg', link: '#' },
+      Botad: { text: 'Explore Botad\'s\' local heritage, traditions and cultural landscape.', image: 'assets/images/districts/botad.jpg', link: '#' },
+      'Chhota Udepur': { text: 'Discover tribal traditions, crafts and the cultural heritage of Chhota Udepur.', image: 'assets/images/districts/chhota-udepur.jpg', link: '#' },
+      Dahod: { text: 'Discover Dahod\'s\' tribal culture, local traditions and regional heritage.', image: 'assets/images/districts/dahod.jpg', link: '#' },
+      Dang: { text: 'Explore the forested landscape, tribal traditions and Saputara region of the Dang.', image: 'assets/images/districts/dang.jpg', link: '#' },
+      'Devbhumi Dwarka': { text: 'Explore the coastal heritage and pilgrimage traditions of Devbhumi Dwarka.', image: 'assets/images/districts/devbhumi-dwarka.jpg', link: '#' },
+      Gandhinagar: { text: 'Explore Gujarat\'s\' capital and nearby heritage attractions including Adalaj.', image: 'assets/images/districts/gandhinagar.jpg', link: '#' },
+      'Gir Somnath': { text: 'Discover Somnath and the coastal heritage of Gir Somnath district.', image: 'assets/images/districts/gir-somnath.jpg', link: '#' },
+      Jamnagar: { text: 'Explore Jamnagar\'s\' historic palaces, lakes and regional cultural traditions.', image: 'assets/images/districts/jamnagar.jpg', link: '#' },
+      Junagadh: { text: 'Discover Junagadh\'s\' forts, Girnar and the layered history of Saurashtra.', image: 'assets/images/districts/junagadh.jpg', link: '#' },
+      Kutch: { text: 'Explore Kachchh, its desert landscape, crafts, folk traditions and distinctive culture.', image: 'assets/images/districts/kachchh.jpg', link: '#' },
+      Kachchh: { text: 'Explore Kachchh, its desert landscape, crafts, folk traditions and distinctive culture.', image: 'assets/images/districts/kachchh.jpg', link: '#' },
+      Kheda: { text: 'Explore Kheda and its religious, historic and regional cultural heritage.', image: 'assets/images/districts/kheda.jpg', link: '#' },
+      Mahisagar: { text: 'Discover Mahisagar\'s\' local heritage, religious sites and cultural traditions.', image: 'assets/images/districts/mahisagar.jpg', link: '#' },
+      Mehsana: { text: 'Explore Mehsana and the heritage of northern Gujarat, including Modhera.', image: 'assets/images/districts/mehsana.jpg', link: '#' },
+      Morbi: { text: 'Discover Morbi\'s\' palace architecture, historic landmarks and regional identity.', image: 'assets/images/districts/morbi.jpg', link: '#' },
+      Narmada: { text: 'Explore Narmada district and its major heritage and cultural attractions.', image: 'assets/images/districts/narmada.jpg', link: '#' },
+      Navsari: { text: 'Discover Navsari\'s\' Parsi heritage, coastal history and cultural traditions.', image: 'assets/images/districts/navsari.jpg', link: '#' },
+      Panchmahal: { text: 'Explore Champaner-Pavagadh and the historic landscape of Panchmahal.', image: 'assets/images/districts/panchmahal.jpg', link: '#' },
+      Patan: { text: 'Discover Patan, renowned for Rani ki Vav, historic architecture and crafts.', image: 'assets/images/districts/patan.jpg', link: '#' },
+      Porbandar: { text: 'Explore Porbandar and its coastal heritage, historic places and cultural identity.', image: 'assets/images/districts/porbandar.jpg', link: '#' },
+      Rajkot: { text: 'Discover Rajkot\'s\' museums, historic houses, crafts and cultural institutions.', image: 'assets/images/districts/rajkot.jpg', link: '#' },
+      Sabarkantha: { text: 'Explore Sabarkantha and the historic landscape around Idar.', image: 'assets/images/districts/sabarkantha.jpg', link: '#' },
+      Surat: { text: 'Explore Surat\'s\' historic identity, food traditions, textiles and architecture.', image: 'assets/images/districts/surat.jpg', link: '#' },
+      Surendranagar: { text: 'Discover Surendranagar and the cultural landscape around the Little Rann region.', image: 'assets/images/districts/surendranagar.jpg', link: '#' },
+      Tapi: { text: 'Explore Tapi\'s\' tribal culture, local traditions and natural landscape.', image: 'assets/images/districts/tapi.jpg', link: '#' },
+      Vadodara: { text: 'Discover Vadodara\'s\' palaces, museums, art and historic institutions.', image: 'assets/images/districts/vadodara.jpg', link: '#' },
+      Valsad: { text: 'Explore Valsad\'s\' coastal heritage, local traditions and cultural places.', image: 'assets/images/districts/valsad.jpg', link: '#' },
+      'Vav-Tharad': { text: 'Discover Vav-Tharad and its local heritage, communities and cultural landscape.', image: 'assets/images/districts/vav-tharad.jpg', link: '#' }
+    };
+
+    function districtKey(name) {
+      return String(name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
+    function getDistrictInfo(name) {
+      const exact = districtInfo[name];
+      if (exact) return exact;
+      const key = districtKey(name);
+      const found = Object.keys(districtInfo).find(k => districtKey(k) === key || key.includes(districtKey(k)) || districtKey(k).includes(key));
+      return found ? districtInfo[found] : null;
+    }
+
+    function showDistrict(name) {
+      const data = getDistrictInfo(name) || {
+        text: 'Explore the heritage, culture, food and festivals of this Gujarat district.',
+        image: 'assets/images/india/india-background.jpg',
+        link: '#'
+      };
+      previewTitle.textContent = name;
+      previewText.textContent = data.text;
+      previewImage.src = data.image;
+      previewButton.href = data.link;
+      previewButton.style.display = data.link === '#' ? 'none' : 'inline-block';
+    }
+
+    function styleDistrict(feature) {
+      return { color:'#8c6a55', weight:1.2, fillColor:'#ead7bf', fillOpacity:.58 };
+    }
+
+    function highlightDistrict(e) {
+      e.target.setStyle({ weight:2.5, color:'#6b2d25', fillColor:'#d88a52', fillOpacity:.82 });
+      if (e.target.bringToFront) e.target.bringToFront();
+      const name = getDistrictName(e.target.feature);
+      showDistrict(name);
+    }
+
+    function resetDistrict(e) {
+      geojson.resetStyle(e.target);
+    }
+
+    function getDistrictName(feature) {
+      const p = feature.properties || {};
+      return String(
+        p.NAME || p.name || p.DISTRICT || p.district || p.DIST_NAME ||
+        p.District || p.District_Name || p.dtname || 'District'
+      ).trim();
+    }
+
+    function getDistrictLink(name) {
+      const n = districtKey(name);
+
+      // Ahmedabad has appeared with different spellings in district datasets.
+      if (n === 'ahmedabad' || n === 'ahmadabad' || n.includes('ahmedabad')) {
+        return 'ahmedabad.html';
+      }
+
+      const data = getDistrictInfo(name);
+      return data ? data.link : '#';
+    }
+
+    function clickDistrict(e) {
+      const name = getDistrictName(e.target.feature);
+      const link = getDistrictLink(name);
+
+      showDistrict(name);
+
+      if (link !== '#') {
+        window.location.href = link;
+      } else {
+        // Keep the selected district visible even when its page is not built yet.
+        previewButton.style.display = 'none';
+      }
+    }
+
+    function onEachDistrict(feature, layer) {
+      const name = getDistrictName(feature);
+      layer.bindTooltip(name, { sticky:true, className:'district-tooltip' });
+      layer.options.className = 'district-layer';
+      layer.on({
+        mouseover: highlightDistrict,
+        mouseout: resetDistrict,
+        click: clickDistrict
+      });
+    }
+
+    let geojson;
+
+    // Gujarat-specific district layer. The service returns GeoJSON directly.
+    const districtURL = 'https://cdn.jsdelivr.net/gh/udit-001/india-maps-data@2884453/geojson/states/gujarat.geojson';
+    const districtFallbackURL = 'https://services7.arcgis.com/KyVYEOdteN9vDcGi/ArcGIS/rest/services/Gujarat_WFL1/FeatureServer/1/query?where=1%3D1&outFields=*&returnGeometry=true&f=geojson';
+
+    function renderDistrictMap(data){
+      geojson = L.geoJSON(data, { style: styleDistrict, onEachFeature: onEachDistrict }).addTo(map);
+      const bounds = geojson.getBounds();
+      if (bounds.isValid()) map.fitBounds(bounds, { padding:[20,20] });
+    }
+
+    fetch(districtURL)
+      .then(response => {
+        if (!response.ok) throw new Error('Primary district map request failed');
+        return response.json();
+      })
+      .then(renderDistrictMap)
+      .catch(primaryError => {
+        console.warn('Primary Gujarat map source failed; trying fallback.', primaryError);
+        return fetch(districtFallbackURL)
+          .then(response => {
+            if (!response.ok) throw new Error('Fallback district map request failed');
+            return response.json();
+          })
+          .then(renderDistrictMap);
+      })
+      .catch(error => {
+        console.error(error);
+        previewTitle.textContent = 'Map unavailable';
+        previewText.textContent = 'The district map could not be loaded. Please check your internet connection and refresh the page.';
+        previewButton.style.display = 'none';
+      });
+  </script>
+<script src="assets/js/common-nav.js"></script></body>
+</html>

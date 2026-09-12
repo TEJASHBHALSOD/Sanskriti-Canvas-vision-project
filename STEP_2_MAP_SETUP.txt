@@ -1,0 +1,18 @@
+STEP 2 — INTERACTIVE INDIA MAP
+
+Updated file:
+- explore.html
+
+No image is required for the map itself. The India state boundaries are loaded from a GeoJSON dataset in the browser.
+
+Existing image used for preview cards:
+- assets/images/gujarat/gujarat-preview.jpg
+- assets/images/india/india-background.jpg
+
+Interaction:
+Hover state -> highlight/preview
+Click Gujarat -> gujarat.html
+Other states -> preview + Coming Soon until their pages are built.
+
+Important:
+The map boundary data is loaded online, so the page currently needs an internet connection.

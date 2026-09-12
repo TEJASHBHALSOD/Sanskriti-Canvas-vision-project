@@ -1,0 +1,103 @@
+SANSKRITI CANVAS - FINAL IMAGE REQUIREMENTS
+============================================
+
+IMPORTANT
+---------
+The website code now uses fixed image paths for district/state images. Replace the temporary images with final realistic photographs using EXACTLY the same filenames. Do NOT change the filenames or folder paths; therefore no code change will be required when the final photos are supplied.
+
+Preferred formats: JPG/JPEG
+Preferred orientation: Landscape
+District/state preview size: 800 x 600 px (4:3)
+Hero images: 1600 x 900 px (16:9)
+Detail images: 1200 x 800 px (3:2)
+
+1. GUJARAT DISTRICTS
+---------------------
+Folder: assets/images/districts/
+
+ahmedabad.jpg       - Ahmedabad - Sabarmati Ashram / old Ahmedabad heritage
+amreli.jpg          - Amreli - local heritage / Khodaldham
+anand.jpg           - Anand - Amul / local heritage
+aravalli.jpg        - Aravalli - Shamlaji
+banaskantha.jpg     - Banaskantha - Ambaji
+bharuch.jpg         - Bharuch - Golden Bridge / historic Bharuch
+bhavnagar.jpg       - Bhavnagar - Takhteshwar / Nilambag
+botad.jpg           - Botad - local heritage
+chhota-udepur.jpg   - Chhota Udepur - Rathwa tribal culture
+dahod.jpg          - Dahod - tribal culture / local heritage
+dang.jpg            - Dang - Saputara / local landscape
+devbhumi-dwarka.jpg - Devbhumi Dwarka - Dwarkadhish Temple
+gandhinagar.jpg     - Gandhinagar - Adalaj / Akshardham
+gir-somnath.jpg     - Gir Somnath - Somnath Temple
+jamnagar.jpg        - Jamnagar - Lakhota
+junagadh.jpg        - Junagadh - Uparkot / Girnar
+kachchh.jpg         - Kachchh - Rann of Kutch / Bhuj
+kheda.jpg           - Kheda - Dakor
+mahisagar.jpg       - Mahisagar - local heritage
+mehsana.jpg         - Mehsana - Modhera Sun Temple
+morbi.jpg           - Morbi - palace / historic bridge
+narmada.jpg         - Narmada - Statue of Unity / local heritage
+navsari.jpg         - Navsari - Dandi / Parsi heritage
+panchmahal.jpg      - Panchmahal - Champaner-Pavagadh
+patan.jpg            - Patan - Rani ki Vav
+porbandar.jpg       - Porbandar - Kirti Mandir
+rajkot.jpg           - Rajkot - Kaba Gandhi No Delo / Watson Museum
+sabarkantha.jpg      - Sabarkantha - Idar Fort
+surat.jpg            - Surat - Surat Castle / historic Surat
+surendranagar.jpg    - Surendranagar - Little Rann / local heritage
+tapi.jpg             - Tapi - tribal culture / landscape
+vadodara.jpg         - Vadodara - Laxmi Vilas Palace
+valsad.jpg           - Valsad - Tithal / local heritage
+vav-tharad.jpg       - Vav-Tharad - local heritage / cultural landscape
+
+2. MAJOR STATE PREVIEW IMAGES
+-----------------------------
+Folder: assets/images/states/
+
+gujarat.jpg          - Gujarat - Modhera Sun Temple
+rajasthan.jpg        - Rajasthan - Hawa Mahal
+maharashtra.jpg      - Maharashtra - Gateway of India
+uttar-pradesh.jpg    - Uttar Pradesh - Taj Mahal
+madhya-pradesh.jpg   - Madhya Pradesh - Khajuraho
+karnataka.jpg        - Karnataka - Hampi
+tamil-nadu.jpg       - Tamil Nadu - Brihadisvara Temple
+kerala.jpg            - Kerala - Kathakali / Kerala heritage
+odisha.jpg            - Odisha - Konark Sun Temple
+west-bengal.jpg       - West Bengal - Victoria Memorial
+bihar.jpg             - Bihar - Nalanda
+punjab.jpg            - Punjab - Golden Temple
+goa.jpg               - Goa - Old Goa Churches
+andhra-pradesh.jpg    - Andhra Pradesh - Amaravati / Tirupati
+telangana.jpg         - Telangana - Charminar
+
+3. EXISTING CATEGORY / HERO IMAGES
+-----------------------------------
+Keep or replace using the SAME path and filename:
+
+assets/images/gujarat/gujarat-hero.jpg
+assets/images/gujarat/gujarat-preview.jpg
+assets/images/gujarat/gujarat-culture.jpg
+assets/images/ahmedabad/ahmedabad-hero.jpg
+assets/images/ahmedabad/ahmedabad-city.jpg
+assets/images/heritage/sabarmati-ashram.jpg
+assets/images/heritage/adalaj-stepwell.jpg
+assets/images/heritage/bhadra-fort.jpg
+assets/images/heritage/sidi-saiyyed-mosque.jpg
+assets/images/heritage/somnath-temple.jpg
+assets/images/culture/garba.jpg
+assets/images/culture/handicraft.jpg
+assets/images/culture/traditional-art.jpg
+assets/images/food/gujarati-thali.jpg
+assets/images/food/khaman.jpg
+assets/images/food/fafda-jalebi.jpg
+assets/images/festivals/navratri.jpg
+assets/images/festivals/uttarayan.jpg
+assets/images/festivals/diwali.jpg
+
+4. SOURCE / COPYRIGHT
+---------------------
+For every final photograph, keep a source/credit link in your research sheet. Prefer government, museum, heritage organization, Wikimedia Commons/public-domain or appropriately licensed photographs. Do not use copyrighted photographs without permission.
+
+5. TEMPORARY IMAGES IN THIS ZIP
+--------------------------------
+The districts/ and states/ folders currently contain temporary copies of existing prototype images so the website paths work immediately. Replace those files with the final photographs above. The filenames MUST stay unchanged.

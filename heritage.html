@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage of Ahmedabad | Sanskriti Canvas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f7f1e6;
+            color: #3f2419;
+        }
+
+        nav {
+            height: 72px;
+            background: #fffaf1;
+            border-bottom: 1px solid #dfcfb8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #7d241d;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a3327;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #9d3c24;
+        }
+
+        .hero {
+            min-height: 390px;
+            padding: 70px 8%;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(90deg, rgba(55, 27, 17, .78), rgba(55, 27, 17, .35)),
+                url("assets/images/heritage/sabarmati-ashram.jpg") center/cover;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            margin-bottom: 20px;
+            opacity: .9;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 68px);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        .section {
+            padding: 65px 7%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .section-heading h2 {
+            font-size: 36px;
+            color: #69251b;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #745c4c;
+            font-size: 16px;
+        }
+
+        .heritage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .heritage-card {
+            background: #fffaf2;
+            border: 1px solid #e1d1ba;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(73, 42, 23, .08);
+            transition: .3s ease;
+        }
+
+        .heritage-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(73, 42, 23, .15);
+        }
+
+        .heritage-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 22px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #efe0c9;
+            color: #7b2e20;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-content h3 {
+            font-size: 23px;
+            margin-bottom: 10px;
+            color: #54251b;
+        }
+
+        .card-content p {
+            color: #735d50;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .details-btn {
+            display: inline-block;
+            margin-top: 17px;
+            padding: 10px 17px;
+            border-radius: 8px;
+            background: #7d2b20;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .details-btn:hover {
+            background: #5e2018;
+        }
+
+        .info-box {
+            margin-top: 45px;
+            background: #ead9bd;
+            border-left: 5px solid #8c3424;
+            padding: 25px;
+            border-radius: 12px;
+            line-height: 1.7;
+            color: #54382b;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-link a {
+            color: #7d2b20;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #382018;
+            color: #eee2d4;
+            text-align: center;
+            padding: 28px 6%;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .heritage-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                padding: 0 4%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 7%;
+            }
+
+            .section {
+                padding: 45px 5%;
+            }
+
+            .heritage-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="assets/css/common-nav.css"></head>
+
+<body>
+
+<header class="sc-global-header">
+  <div class="sc-global-nav-wrap">
+    <a class="sc-global-brand" href="index.html" aria-label="Sanskriti Canvas home"><img src="assets/images/logo-full.png" alt="Sanskriti Canvas"></a>
+    <button class="sc-global-menu" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="sc-global-links" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="index.html#heritage" class="active">Heritage</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="search.html">⌕ Search</a>
+      <a class="sc-global-login" href="login.html">Login</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="breadcrumb">
+            <a href="index.html">India</a> /
+            <a href="gujarat.html">Gujarat</a> /
+            <a href="ahmedabad.html">Ahmedabad</a> /
+            Heritage
+        </div>
+
+        <h1>Heritage of Ahmedabad</h1>
+
+        <p>
+            Discover the historic places, monuments and architectural treasures
+            that preserve Ahmedabad's rich cultural identity and history.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+
+    <div class="section-heading">
+        <h2>Explore Heritage</h2>
+        <p>Discover important heritage places of Ahmedabad</p>
+    </div>
+
+    <div class="heritage-grid">
+
+        <article class="heritage-card">
+            <img src="assets/images/heritage/sabarmati-ashram.jpg"
+                 alt="Sabarmati Ashram">
+
+            <div class="card-content">
+                <span class="tag">Historic Site</span>
+                <h3>Sabarmati Ashram</h3>
+                <p>
+                    A historically significant place associated with India's
+                    freedom movement and Mahatma Gandhi.
+                </p>
+
+                <a href="heritage-detail.html?place=sabarmati-ashram"
+                   class="details-btn">
+                    View Details
+                </a>
+            </div>
+        </article>
+
+        <article class="heritage-card">
+            <img src="assets/images/heritage/adalaj-stepwell.jpg"
+                 alt="Adalaj Stepwell">
+
+            <div class="card-content">
+                <span class="tag">Architecture</span>
+                <h3>Adalaj Stepwell</h3>
+                <p>
+                    A remarkable stepwell known for its intricate stone
+                    architecture and traditional craftsmanship.
+                </p>
+
+                <a href="heritage-detail.html?place=adalaj-stepwell"
+                   class="details-btn">
+                    View Details
+                </a>
+            </div>
+        </article>
+
+        <article class="heritage-card">
+            <img src="assets/images/heritage/bhadra-fort.jpg"
+                 alt="Bhadra Fort">
+
+            <div class="card-content">
+                <span class="tag">Fort</span>
+                <h3>Bhadra Fort</h3>
+                <p>
+                    One of Ahmedabad's historic landmarks, reflecting the
+                    city's medieval architectural heritage.
+                </p>
+
+                <a href="heritage-detail.html?place=bhadra-fort"
+                   class="details-btn">
+                    View Details
+                </a>
+            </div>
+        </article>
+
+        <article class="heritage-card">
+            <img src="assets/images/heritage/sidi-saiyyed-mosque.jpg"
+                 alt="Sidi Saiyyed Mosque">
+
+            <div class="card-content">
+                <span class="tag">Architecture</span>
+                <h3>Sidi Saiyyed Mosque</h3>
+                <p>
+                    Famous for its finely carved stone jali work and one of
+                    Ahmedabad's most recognizable architectural details.
+                </p>
+
+                <a href="heritage-detail.html?place=sidi-saiyyed-mosque"
+                   class="details-btn">
+                    View Details
+                </a>
+            </div>
+        </article>
+
+        <article class="heritage-card">
+            <img src="assets/images/heritage/somnath-temple.jpg"
+                 alt="Somnath Temple">
+
+            <div class="card-content">
+                <span class="tag">Religious Heritage</span>
+                <h3>Somnath Temple</h3>
+                <p>
+                    A major heritage and pilgrimage destination of Gujarat,
+                    included here as a Gujarat-wide cultural reference.
+                </p>
+
+                <a href="heritage-detail.html?place=somnath-temple"
+                   class="details-btn">
+                    View Details
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="info-box">
+        <strong>Why Heritage Matters</strong><br>
+        Heritage is more than an old building or monument. It carries stories,
+        traditions, architecture and memories from one generation to another.
+        Sanskriti Canvas aims to make these stories easier to discover,
+        document and preserve.
+    </div>
+
+    <div class="back-link">
+        <a href="ahmedabad.html">← Back to Ahmedabad</a>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Sanskriti Canvas — Explore. Discover. Contribute. Preserve.</p>
+</footer>
+
+<script src="assets/js/common-nav.js"></script></body>
+</html>
